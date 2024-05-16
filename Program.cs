@@ -38,55 +38,61 @@ internal class Program
             Console.WriteLine("El numero invertido es:" + invertido);
         }
 
+
+
+
         //ejercicio2
         Console.WriteLine("Desea usar la calculadora? 1:si, 0:no");
         string operacion = Console.ReadLine();
-        int num3;
 
-// Resto del código...
-
-if (int.TryParse(operacion, out num3))
-{
-    if (num3 == 1)
-    {
-
-        Console.WriteLine("Ingrese el primer numero:");
-        string n1 = Console.ReadLine();
-        Console.WriteLine("Ingrese el segundo numero:");
-        string n2 = Console.ReadLine();
-        Console.WriteLine("Ingrese la operacion: 1:suma, 2:resta, 3:multiplicar, 4:dividir");
-        string operaciones = Console.ReadLine();
-
-        int operador;
-        int num1;
-        int num2;
-        int resultado; // Declaración de resultado fuera del switch
-
-
-        bool res2 = int.TryParse(operaciones, out operador);
-        bool bol1 = int.TryParse(n1, out num1);
-        bool bol2 = int.TryParse(n2, out num2);
-        
-
-        switch (operador)
+        if (int.TryParse(operacion, out int num3))
         {
+            while (num3 == 1)
+            {
+                Console.WriteLine("Ingrese el primer numero:");
+                string n1 = Console.ReadLine();
+                Console.WriteLine("Ingrese el segundo numero:");
+                string n2 = Console.ReadLine();
+                Console.WriteLine("Ingrese la operacion: 1:suma, 2:resta, 3:multiplicar, 4:dividir");
+                string operaciones = Console.ReadLine();
 
-            case 1:
-                resultado = num1 + num2;
-                break;
-            case 2:
-                resultado = num1 - num2;
-                break;
-            case 3:
-                resultado = num1 * num2;
-                break;
-            case 4:
-                resultado = num1 / num2;
-                break;
+                int resul; // Declaración de resultado fuera del switch
+
+                bool res2 = int.TryParse(operaciones, out int operador);
+                bool bol1 = int.TryParse(n1, out int num1);
+                bool bol2 = int.TryParse(n2, out int num2);
+
+                if (res2 && bol1 && bol2)
+                {
+                    switch (operador)
+                    {
+                        case 1:
+                            resul = num1 + num2;
+                            break;
+                        case 2:
+                            resul = num1 - num2;
+                            break;
+                        case 3:
+                            resul = num1 * num2;
+                            break;
+                        case 4:
+                            if (num2 != 0)
+                            {
+                                resul = num1 / num2;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error: división por cero.");
+                                continue;
+                            }
+                            break;
+                    }
+
+                    Console.WriteLine("El resultado es: " + resul);
+                }
+                Console.WriteLine("¿Desea usar la calculadora de nuevo? 1:si, 0:no");
+                operacion = Console.ReadLine();
+            }
         }
-
-        Console.WriteLine("El resultado es: " + resultado);
-
     }
-}
 }
